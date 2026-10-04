@@ -1,0 +1,829 @@
+{
+  "experiment": "exp16_cost_economics_mining",
+  "paper": "cost_economics_study",
+  "frozen_at": "2026-10-03T20:05:20",
+  "db_path": "~/.weclaw/history.db",
+  "db_size_mb": 210.99,
+  "source_table": "usage_records",
+  "row_count": 28311,
+  "window": {
+    "min": "2026-07-25T06:50:15",
+    "max": "2026-10-03T18:00:56"
+  },
+  "window_days": 70,
+  "currency_profile": {
+    "(empty)": 8418,
+    "CNY": 11312,
+    "USD": 8581
+  },
+  "null_zero_profile": {
+    "cost_null": 0,
+    "cost_zero": 2598,
+    "cost_cny_null": 8418,
+    "cost_cny_zero": 2836,
+    "cached_null": 0,
+    "cached_gt0": 16796,
+    "price_ref_empty": 16746
+  },
+  "totals": {
+    "cost_sum": 592.2663,
+    "cost_cny_sum": 1953.7995,
+    "prompt_tokens": 1995730354,
+    "completion_tokens": 19749094,
+    "total_tokens": 2015479448,
+    "cached_tokens": 837237452,
+    "_note": "cost_sum=全窗口 USD（跨两 cohort，含迁移前估算器）；成本权威基见 cost_model"
+  },
+  "cost_model": {
+    "fx_usd_to_cny_implied": 7.2,
+    "fx_range": {
+      "min": 7.2,
+      "max": 7.2,
+      "n": 17057
+    },
+    "fx_basis": "固定配置汇率（[billing].usd_to_cny），非市场浮动；cost_cny = cost × fx",
+    "cost_field_semantics": {
+      "cost": "USD，全窗口一致（price_usage_record: cost=result.cost_usd）",
+      "cost_cny": "CNY = cost × fx，仅新 cohort（post-0829）填充；旧行为 NULL",
+      "currency": "价表原生币种（CNY/USD）——溯源标签，非 cost 的币种"
+    },
+    "cohort_boundary": "v10.10.0 计费迁移 @2026-08-29（pricing.py 上线；qwen/kimi 单位混淆纠偏）",
+    "cohorts": {
+      "new_post_0829": {
+        "cohort": "new_post_0829",
+        "n": 19893,
+        "tmin": "2026-08-29T13:59:02",
+        "tmax": "2026-10-03T18:00:56",
+        "usd": 272.4486,
+        "cny": 1953.7995,
+        "tt": 973347619,
+        "pt": 959966093,
+        "cache": 837237452,
+        "failed": 257,
+        "unit_usd_per_mtok": 0.2799
+      },
+      "old_pre_0829": {
+        "cohort": "old_pre_0829",
+        "n": 8418,
+        "tmin": "2026-07-25T06:50:15",
+        "tmax": "2026-08-29T16:42:32",
+        "usd": 319.8177,
+        "cny": null,
+        "tt": 1042131829,
+        "pt": 1035764261,
+        "cache": 0,
+        "failed": 0,
+        "unit_usd_per_mtok": 0.3069
+      }
+    },
+    "authoritative_cost_basis": {
+      "cohort": "new_post_0829",
+      "usd": 272.4486,
+      "cny": 1953.7995,
+      "n": 19893,
+      "total_tokens": 973347619,
+      "unit_usd_per_mtok": 0.2799,
+      "rationale": "唯一具纠偏后双币 + price_ref 行级溯源的口径；成本主张一律以此为准"
+    }
+  },
+  "by_source": [
+    {
+      "k": "main",
+      "n": 27609,
+      "pt": 1994972793,
+      "ct": 18487665,
+      "tt": 2013460458,
+      "cache": 836953932,
+      "cost": 591.8641,
+      "cost_cny": 1950.9038
+    },
+    {
+      "k": "aux",
+      "n": 692,
+      "pt": 752948,
+      "ct": 1260289,
+      "tt": 2013237,
+      "cache": 283520,
+      "cost": 0.4015,
+      "cost_cny": 2.8909
+    },
+    {
+      "k": "mental_health",
+      "n": 10,
+      "pt": 4613,
+      "ct": 1140,
+      "tt": 5753,
+      "cache": 0,
+      "cost": 0.0007,
+      "cost_cny": 0.0048
+    }
+  ],
+  "by_status": [
+    {
+      "k": "ok",
+      "n": 28054,
+      "pt": 1995730354,
+      "ct": 19749094,
+      "tt": 2015479448,
+      "cache": 837237452,
+      "cost": 592.2663,
+      "cost_cny": 1953.7995
+    },
+    {
+      "k": "failed",
+      "n": 257,
+      "pt": 0,
+      "ct": 0,
+      "tt": 0,
+      "cache": 0,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    }
+  ],
+  "by_status_newcohort": [
+    {
+      "k": "ok",
+      "n": 19636,
+      "pt": 959966093,
+      "ct": 13381526,
+      "tt": 973347619,
+      "cache": 837237452,
+      "cost": 272.4486,
+      "cost_cny": 1953.7995
+    },
+    {
+      "k": "failed",
+      "n": 257,
+      "pt": 0,
+      "ct": 0,
+      "tt": 0,
+      "cache": 0,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    }
+  ],
+  "by_model": [
+    {
+      "k": "deepseek-v4-flash",
+      "n": 13257,
+      "pt": 913893289,
+      "ct": 8269716,
+      "tt": 922163005,
+      "cache": 295961820,
+      "cost": 89.5878,
+      "cost_cny": 60.1167
+    },
+    {
+      "k": "custom-deepseek-flash",
+      "n": 7069,
+      "pt": 456666355,
+      "ct": 6251968,
+      "tt": 462918323,
+      "cache": 418130431,
+      "cost": 162.2708,
+      "cost_cny": 1168.3496
+    },
+    {
+      "k": "deepseek-v4-pro",
+      "n": 4216,
+      "pt": 494830261,
+      "ct": 3364349,
+      "tt": 498194610,
+      "cache": 75827968,
+      "cost": 178.9915,
+      "cost_cny": 48.8181
+    },
+    {
+      "k": "qwen-max",
+      "n": 994,
+      "pt": 19982104,
+      "ct": 371955,
+      "tt": 20354059,
+      "cache": 4517376,
+      "cost": 43.8006,
+      "cost_cny": 130.5852
+    },
+    {
+      "k": "glm-5",
+      "n": 532,
+      "pt": 24990688,
+      "ct": 249604,
+      "tt": 25240292,
+      "cache": 1590144,
+      "cost": 17.7137,
+      "cost_cny": 22.9061
+    },
+    {
+      "k": "glm-4.7-flash",
+      "n": 396,
+      "pt": 581065,
+      "ct": 33080,
+      "tt": 614145,
+      "cache": 441370,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "deepseek-chat",
+      "n": 344,
+      "pt": 430000,
+      "ct": 197800,
+      "tt": 627800,
+      "cache": 0,
+      "cost": 0.399,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "custom-qwen3.8-flash",
+      "n": 338,
+      "pt": 36782490,
+      "ct": 341439,
+      "tt": 37123929,
+      "cache": 29160192,
+      "cost": 69.9398,
+      "cost_cny": 503.5662
+    },
+    {
+      "k": "custom-glm-5.3-flash",
+      "n": 252,
+      "pt": 11179534,
+      "ct": 250498,
+      "tt": 11430032,
+      "cache": 8511296,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "gpt-4o",
+      "n": 215,
+      "pt": 150500,
+      "ct": 68800,
+      "tt": 219300,
+      "cache": 0,
+      "cost": 1.333,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "custom-glm-5.3",
+      "n": 188,
+      "pt": 22068300,
+      "ct": 153548,
+      "tt": 22221848,
+      "cache": 722688,
+      "cost": 27.0962,
+      "cost_cny": 12.209
+    },
+    {
+      "k": "or-free-router",
+      "n": 156,
+      "pt": 8131943,
+      "ct": 97652,
+      "tt": 8229595,
+      "cache": 921905,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "or-minimax-m27-free",
+      "n": 117,
+      "pt": 2391271,
+      "ct": 53361,
+      "tt": 2444632,
+      "cache": 831010,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "qwen-turbo",
+      "n": 80,
+      "pt": 214978,
+      "ct": 2821,
+      "tt": 217799,
+      "cache": 0,
+      "cost": 0.0347,
+      "cost_cny": 0.0314
+    },
+    {
+      "k": "llamacpp-gemma4-e4b",
+      "n": 59,
+      "pt": 863655,
+      "ct": 14290,
+      "tt": 877945,
+      "cache": 414276,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "llamacpp-qwen38-27b",
+      "n": 55,
+      "pt": 1145383,
+      "ct": 18872,
+      "tt": 1164255,
+      "cache": 0,
+      "cost": 0.0,
+      "cost_cny": null
+    },
+    {
+      "k": "test-model",
+      "n": 21,
+      "pt": 210,
+      "ct": 105,
+      "tt": 315,
+      "cache": 0,
+      "cost": 0.0,
+      "cost_cny": null
+    },
+    {
+      "k": "custom-deepseek-v4-flash-vision-exp",
+      "n": 16,
+      "pt": 1377384,
+      "ct": 3625,
+      "tt": 1381009,
+      "cache": 206976,
+      "cost": 0.9952,
+      "cost_cny": 7.1654
+    },
+    {
+      "k": "qwen-vl-max",
+      "n": 6,
+      "pt": 50944,
+      "ct": 5611,
+      "tt": 56555,
+      "cache": 0,
+      "cost": 0.104,
+      "cost_cny": 0.0518
+    }
+  ],
+  "by_model_newcohort": [
+    {
+      "k": "deepseek-v4-flash",
+      "n": 8918,
+      "pt": 340145559,
+      "ct": 5006854,
+      "tt": 345152413,
+      "cache": 295961820,
+      "cost": 8.3495,
+      "cost_cny": 60.1167
+    },
+    {
+      "k": "custom-deepseek-flash",
+      "n": 7069,
+      "pt": 456666355,
+      "ct": 6251968,
+      "tt": 462918323,
+      "cache": 418130431,
+      "cost": 162.2708,
+      "cost_cny": 1168.3496
+    },
+    {
+      "k": "qwen-max",
+      "n": 920,
+      "pt": 9915176,
+      "ct": 322308,
+      "tt": 10237484,
+      "cache": 4517376,
+      "cost": 18.1368,
+      "cost_cny": 130.5852
+    },
+    {
+      "k": "deepseek-v4-pro",
+      "n": 894,
+      "pt": 90076846,
+      "ct": 695960,
+      "tt": 90772806,
+      "cache": 75827968,
+      "cost": 6.7803,
+      "cost_cny": 48.8181
+    },
+    {
+      "k": "glm-4.7-flash",
+      "n": 396,
+      "pt": 581065,
+      "ct": 33080,
+      "tt": 614145,
+      "cache": 441370,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "glm-5",
+      "n": 336,
+      "pt": 4347266,
+      "ct": 132627,
+      "tt": 4479893,
+      "cache": 1590144,
+      "cost": 3.1814,
+      "cost_cny": 22.9061
+    },
+    {
+      "k": "custom-qwen3.8-flash",
+      "n": 311,
+      "pt": 33722198,
+      "ct": 311920,
+      "tt": 34034118,
+      "cache": 29160192,
+      "cost": 69.9398,
+      "cost_cny": 503.5662
+    },
+    {
+      "k": "custom-glm-5.3-flash",
+      "n": 252,
+      "pt": 11179534,
+      "ct": 250498,
+      "tt": 11430032,
+      "cache": 8511296,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "deepseek-chat",
+      "n": 216,
+      "pt": 270000,
+      "ct": 124200,
+      "tt": 394200,
+      "cache": 0,
+      "cost": 0.2506,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "or-free-router",
+      "n": 156,
+      "pt": 8131943,
+      "ct": 97652,
+      "tt": 8229595,
+      "cache": 921905,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "gpt-4o",
+      "n": 135,
+      "pt": 94500,
+      "ct": 43200,
+      "tt": 137700,
+      "cache": 0,
+      "cost": 0.837,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "or-minimax-m27-free",
+      "n": 117,
+      "pt": 2391271,
+      "ct": 53361,
+      "tt": 2444632,
+      "cache": 831010,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "qwen-turbo",
+      "n": 75,
+      "pt": 17204,
+      "ct": 2341,
+      "tt": 19545,
+      "cache": 0,
+      "cost": 0.0044,
+      "cost_cny": 0.0314
+    },
+    {
+      "k": "llamacpp-gemma4-e4b",
+      "n": 59,
+      "pt": 863655,
+      "ct": 14290,
+      "tt": 877945,
+      "cache": 414276,
+      "cost": 0.0,
+      "cost_cny": 0.0
+    },
+    {
+      "k": "custom-glm-5.3",
+      "n": 28,
+      "pt": 1286573,
+      "ct": 37952,
+      "tt": 1324525,
+      "cache": 722688,
+      "cost": 1.6957,
+      "cost_cny": 12.209
+    },
+    {
+      "k": "custom-deepseek-v4-flash-vision-exp",
+      "n": 6,
+      "pt": 248348,
+      "ct": 1800,
+      "tt": 250148,
+      "cache": 206976,
+      "cost": 0.9952,
+      "cost_cny": 7.1654
+    },
+    {
+      "k": "qwen-vl-max",
+      "n": 5,
+      "pt": 28600,
+      "ct": 1515,
+      "tt": 30115,
+      "cache": 0,
+      "cost": 0.0072,
+      "cost_cny": 0.0518
+    }
+  ],
+  "cache": {
+    "records_with_cache": 16796,
+    "share_of_all": 0.5933,
+    "cached_tokens_sum": 837237452,
+    "prompt_tokens_sum_cached_recs": 929969770,
+    "cache_ratio_p50": 0.9721,
+    "cache_ratio_p90": 0.9949,
+    "cache_ratio_mean": 0.8756
+  },
+  "context_growth": {
+    "prompt_tokens_p50": 45555.0,
+    "prompt_tokens_p90": 147366.0,
+    "prompt_tokens_p99": 305758.4,
+    "prompt_tokens_max": 623260,
+    "count_gt_100k": 9330,
+    "count_gt_200k": 929,
+    "count_gt_500k": 2
+  },
+  "weekly": [
+    {
+      "week": "2026-W30",
+      "n": 336,
+      "cost": 17.1316,
+      "cost_cny": 0.0,
+      "max_prompt": 559321
+    },
+    {
+      "week": "2026-W31",
+      "n": 1552,
+      "cost": 78.5239,
+      "cost_cny": 0.0,
+      "max_prompt": 456486
+    },
+    {
+      "week": "2026-W32",
+      "n": 2088,
+      "cost": 82.0647,
+      "cost_cny": 0.0,
+      "max_prompt": 471289
+    },
+    {
+      "week": "2026-W33",
+      "n": 1576,
+      "cost": 47.316,
+      "cost_cny": 0.0,
+      "max_prompt": 623260
+    },
+    {
+      "week": "2026-W34",
+      "n": 1282,
+      "cost": 44.63,
+      "cost_cny": 0.0,
+      "max_prompt": 498522
+    },
+    {
+      "week": "2026-W35",
+      "n": 2239,
+      "cost": 51.9049,
+      "cost_cny": 9.1441,
+      "max_prompt": 483298
+    },
+    {
+      "week": "2026-W36",
+      "n": 1882,
+      "cost": 67.2273,
+      "cost_cny": 481.1365,
+      "max_prompt": 244599
+    },
+    {
+      "week": "2026-W37",
+      "n": 2412,
+      "cost": 7.1826,
+      "cost_cny": 51.4245,
+      "max_prompt": 207116
+    },
+    {
+      "week": "2026-W38",
+      "n": 2570,
+      "cost": 37.7278,
+      "cost_cny": 270.7701,
+      "max_prompt": 480513
+    },
+    {
+      "week": "2026-W39",
+      "n": 8891,
+      "cost": 99.5991,
+      "cost_cny": 716.8235,
+      "max_prompt": 363210
+    },
+    {
+      "week": "2026-W40",
+      "n": 3483,
+      "cost": 58.9584,
+      "cost_cny": 424.5008,
+      "max_prompt": 261969
+    }
+  ],
+  "failure_cost": {
+    "failed_calls": 257,
+    "failed_rate": 0.0091,
+    "failed_total_tokens": 0,
+    "failed_cost": 0.0,
+    "failed_cost_cny": 0.0
+  },
+  "cost_distribution": {
+    "cohort": "new_post_0829",
+    "currency": "USD",
+    "nonzero_records": 17408,
+    "p50": 0.001531,
+    "p90": 0.035858,
+    "p99": 0.279896,
+    "max": 0.476504
+  },
+  "price_ref_top": [
+    {
+      "ref": "docs/llm_api_guide/deepseek_20260509/deepseek_20260509.md:78-84 @2026-08-29",
+      "n": 9600
+    },
+    {
+      "ref": "docs/llm_api_guide/qwen_api_detail_20260315.md/qwen_price.md:21 @2026-08-29",
+      "n": 920
+    },
+    {
+      "ref": "docs/llm_api_guide/glm_api_detail/glm_model_price.md:134-145 @2026-08-29",
+      "n": 394
+    },
+    {
+      "ref": "docs/llm_api_guide/glm_api_detail/glm_model_list_price_20260827update.md:57-80 @2026-08-29",
+      "n": 336
+    },
+    {
+      "ref": "docs/llm_api_guide/openrouter/ApiGuides.md:Limits @2026-09-01",
+      "n": 208
+    },
+    {
+      "ref": "本地推理（llama.cpp），无 API 计费 @2026-08-29",
+      "n": 47
+    },
+    {
+      "ref": "openrouter-free-pool @2026-09-01",
+      "n": 45
+    },
+    {
+      "ref": "docs/llm_api_guide/qwen_api_detail_20260315.md/qwen_price.md:400-403 @2026-08-29",
+      "n": 10
+    },
+    {
+      "ref": "docs/llm_api_guide/qwen_api_detail_20260315.md/qwen_price.md:657 @2026-08-29",
+      "n": 5
+    }
+  ],
+  "balance_snapshots": [
+    {
+      "ts": "2026-09-09T22:03:03",
+      "provider": "deepseek",
+      "currency": "CNY",
+      "available": 500.45
+    },
+    {
+      "ts": "2026-09-09T22:03:03",
+      "provider": "kimi",
+      "currency": "CNY",
+      "available": 407.11163
+    },
+    {
+      "ts": "2026-09-09T22:03:53",
+      "provider": "deepseek",
+      "currency": "CNY",
+      "available": 500.2
+    },
+    {
+      "ts": "2026-09-09T22:03:54",
+      "provider": "kimi",
+      "currency": "CNY",
+      "available": 407.11163
+    },
+    {
+      "ts": "2026-09-12T08:57:19",
+      "provider": "deepseek",
+      "currency": "CNY",
+      "available": 482.87
+    },
+    {
+      "ts": "2026-09-12T08:57:20",
+      "provider": "kimi",
+      "currency": "CNY",
+      "available": 407.11163
+    },
+    {
+      "ts": "2026-09-15T15:27:53",
+      "provider": "deepseek",
+      "currency": "CNY",
+      "available": 467.98
+    },
+    {
+      "ts": "2026-09-15T15:27:54",
+      "provider": "kimi",
+      "currency": "CNY",
+      "available": 407.11163
+    },
+    {
+      "ts": "2026-09-22T21:52:36",
+      "provider": "deepseek",
+      "currency": "CNY",
+      "available": 411.51
+    },
+    {
+      "ts": "2026-09-22T21:52:37",
+      "provider": "kimi",
+      "currency": "CNY",
+      "available": 386.56372
+    }
+  ],
+  "context_cost_concentration": {
+    "cohort": "new_post_0829",
+    "currency": "USD",
+    "calls_total": 19893,
+    "cost_total": 272.4486,
+    "gt100k_calls": 3256,
+    "gt100k_call_share": 0.1637,
+    "gt100k_cost": 128.1527,
+    "gt100k_cost_share": 0.4704,
+    "gt200k_calls": 238,
+    "gt200k_call_share": 0.012,
+    "gt200k_cost": 28.0081,
+    "gt200k_cost_share": 0.1028,
+    "pearson_prompt_cost": 0.4392,
+    "pearson_n": 17408,
+    "finding": "大上下文调用以少数占比吃掉近半成本 → 上下文缩减是首要成本杠杆"
+  },
+  "retry_analysis": {
+    "failed_calls": 257,
+    "failed_billed_tokens": 0,
+    "note_failed_zero_billing": "failed 行 token/cost 均 0：API 报错不返回 usage，失败本身不产生 token 成本",
+    "immediate_inband_retries": 30,
+    "retry_rate_of_failures": 0.1167,
+    "retry_tokens": 761660,
+    "retry_cost_usd": 0.2065,
+    "finding": "同 session 紧随失败的即时重试罕见（弱信号）；失败的直接 token 代价≈0，可靠性成本主要落在延迟与用户体验，而非 token 账单（与 cron 低错误率呼应）"
+  },
+  "cron_cost_attribution": {
+    "method": "usage_records.session_id ⋈ tool_audit_log.session_id（source 标签）；只读跨库",
+    "rationale": "usage_records.source 无 'cron'（cron 触发折叠进 main）；tool_audit.source 才有 cron",
+    "cron_main_session_overlap": 0,
+    "full_window": {
+      "cron": {
+        "sessions": 1111,
+        "calls": 10825,
+        "usd": 330.7239,
+        "cny": 1152.9827,
+        "tokens": 1060903469
+      },
+      "main": {
+        "sessions": 588,
+        "calls": 8879,
+        "usd": 238.9113,
+        "cny": 682.8823,
+        "tokens": 843082235
+      }
+    },
+    "new_cohort": {
+      "cron": {
+        "sessions": 647,
+        "calls": 7217,
+        "usd": 160.1365,
+        "cny": 1152.9827,
+        "tokens": 558719249
+      },
+      "main": {
+        "sessions": 274,
+        "calls": 4423,
+        "usd": 95.2033,
+        "cny": 682.8823,
+        "tokens": 322144948
+      }
+    },
+    "audit_source_dist": {
+      "cron": {
+        "calls": 19748,
+        "sessions": 1500
+      },
+      "main": {
+        "calls": 18031,
+        "sessions": 1099
+      }
+    },
+    "unattributed_note": "部分 usage session 无工具调用（纯 LLM 聊天/aux/mental_health），不在 tool_audit 中，故未归属"
+  },
+  "corrections_vs_plan": {
+    "source_values": [
+      "(empty)",
+      "CNY",
+      "USD"
+    ],
+    "note_source": "usage_records.source = main/aux/mental_health，无 'cron'（cron 触发折叠进 main）；cron↔main 成本切分已通过 session_id ⋈ tool_audit.source 实现（见 cron_cost_attribution）。",
+    "note_window": "usage_records 窗口 2026-07-25T06:50:15 → 2026-10-03T18:00:56（约 70 天），短于 tool_audit 的 ~4.3 月。",
+    "note_max_prompt": "实测 max prompt_tokens=623260，远高于早期估计的 133,803。",
+    "note_currency": "【已纠正初版误判】cost 列恒为 USD（全窗口一致），cost_cny=cost×7.2（固定汇率，仅新 cohort 填充）；currency 列是价表原生币种（溯源标签），非 cost 的币种 → SUM(cost) 本身即单一 USD 口径，无需再'归一化'。真正的分段是 schema cohort @2026-08-29（计费迁移）：旧 cohort 迁移前估算器（qwen/kimi 单位混淆，已纠）约 $0.307/Mtok，新 cohort 纠偏后约 $0.280/Mtok，两者不可直接比较。成本主张以新 cohort 为权威基（见 cost_model），旧 cohort 单列 + threats-to-validity 注记。",
+    "note_billing": "bill_items 为空、balance_snapshots 仅少量；计费对账层非本研究数据源。"
+  }
+}
