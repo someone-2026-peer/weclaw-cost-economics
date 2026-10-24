@@ -1,0 +1,190 @@
+{
+  "experiment": "exp16b_window_sensitivity",
+  "paper": "cost_economics_study",
+  "frozen_at": "2026-10-24T10:32:29",
+  "source_table": "usage_records",
+  "method": "同 exp16：usage_records.session_id ⋈ tool_audit_log.session_id(source)；成本权威基=新 cohort(cost_cny IS NOT NULL)",
+  "purpose": "检验 RQ6 归属份额（cron 占归属成本）是否随报告窗口长度漂移",
+  "audit_store": {
+    "min": "2026-05-25T09:54:40.599864",
+    "max": "2026-10-24T10:15:29.623515",
+    "rows": 51793,
+    "cron_sessions": 1881,
+    "main_sessions": 1261,
+    "overlap": 0
+  },
+  "window_sensitivity": [
+    {
+      "cutoff": "2026-10-03T18:00:56",
+      "label": "70 d (frozen 2026-10-03)",
+      "calls": 19893,
+      "cost_total_usd": 272.4486,
+      "cron_usd": 160.1365,
+      "main_usd": 95.2033,
+      "attributed_usd": 255.3398,
+      "unattributed_usd": 17.1088,
+      "cron_share_of_attributed": 0.6272,
+      "cron_sessions": 647,
+      "main_sessions": 274,
+      "cron_calls": 7217,
+      "main_calls": 4423
+    },
+    {
+      "cutoff": "2026-10-10T23:59:59",
+      "label": "77 d",
+      "calls": 22977,
+      "cost_total_usd": 368.6182,
+      "cron_usd": 196.6955,
+      "main_usd": 154.3021,
+      "attributed_usd": 350.9976,
+      "unattributed_usd": 17.6206,
+      "cron_share_of_attributed": 0.5604,
+      "cron_sessions": 776,
+      "main_sessions": 343,
+      "cron_calls": 8741,
+      "main_calls": 5679
+    },
+    {
+      "cutoff": "2026-10-17T23:59:59",
+      "label": "84 d",
+      "calls": 26861,
+      "cost_total_usd": 550.1411,
+      "cron_usd": 245.075,
+      "main_usd": 284.606,
+      "attributed_usd": 529.681,
+      "unattributed_usd": 20.46,
+      "cron_share_of_attributed": 0.4627,
+      "cron_sessions": 901,
+      "main_sessions": 384,
+      "cron_calls": 10516,
+      "main_calls": 7455
+    },
+    {
+      "cutoff": "2026-10-24T10:15:43",
+      "label": "91 d (frozen 2026-10-24)",
+      "calls": 31296,
+      "cost_total_usd": 679.0213,
+      "cron_usd": 307.1351,
+      "main_usd": 350.581,
+      "attributed_usd": 657.7161,
+      "unattributed_usd": 21.3052,
+      "cron_share_of_attributed": 0.467,
+      "cron_sessions": 1027,
+      "main_sessions": 436,
+      "cron_calls": 12735,
+      "main_calls": 9367
+    }
+  ],
+  "frozen_reference_A": {
+    "snapshot": "exp16_cost_snapshot_20261003.json",
+    "frozen_at": "2026-10-03T20:05:20",
+    "row_count": 28311,
+    "new_cohort": {
+      "calls": 19893,
+      "cost_total_usd": 272.4486,
+      "cron_usd": 160.1365,
+      "main_usd": 95.2033,
+      "attributed_usd": 255.3398,
+      "cron_share_of_attributed": 0.6272,
+      "unattributed_usd": 17.1088
+    }
+  },
+  "label_drift": {
+    "cron_sessions_labeled_after_freeze": 0,
+    "usd_shifted_into_cron": 0,
+    "note": "这些会话的 usage 行在冻结日之前，但 cron 标签在冻结日之后才落库，会把成本从其计入 cron 归属；截止时刻对齐冻结末行后，第 1 行重算值应与冻结值逐位一致，本段即该项核查。"
+  },
+  "weekly_share": [
+    {
+      "week": "2026-W35",
+      "calls": 655,
+      "cost_usd": 1.7534,
+      "cron_usd": 0.3864,
+      "main_usd": 0.9817,
+      "cron_share": 0.2824
+    },
+    {
+      "week": "2026-W36",
+      "calls": 1882,
+      "cost_usd": 67.2273,
+      "cron_usd": 41.1913,
+      "main_usd": 24.9185,
+      "cron_share": 0.6231
+    },
+    {
+      "week": "2026-W37",
+      "calls": 2412,
+      "cost_usd": 7.1826,
+      "cron_usd": 3.6182,
+      "main_usd": 2.8049,
+      "cron_share": 0.5633
+    },
+    {
+      "week": "2026-W38",
+      "calls": 2570,
+      "cost_usd": 37.7278,
+      "cron_usd": 28.838,
+      "main_usd": 8.3411,
+      "cron_share": 0.7757
+    },
+    {
+      "week": "2026-W39",
+      "calls": 8891,
+      "cost_usd": 99.5991,
+      "cron_usd": 48.5721,
+      "main_usd": 37.5219,
+      "cron_share": 0.5642
+    },
+    {
+      "week": "2026-W40",
+      "calls": 3791,
+      "cost_usd": 66.7391,
+      "cron_usd": 44.2756,
+      "main_usd": 21.5882,
+      "cron_share": 0.6722
+    },
+    {
+      "week": "2026-W41",
+      "calls": 3274,
+      "cost_usd": 98.9265,
+      "cron_usd": 35.4946,
+      "main_usd": 62.9457,
+      "cron_share": 0.3606
+    },
+    {
+      "week": "2026-W42",
+      "calls": 3913,
+      "cost_usd": 181.6998,
+      "cron_usd": 49.49,
+      "main_usd": 128.9397,
+      "cron_share": 0.2774
+    },
+    {
+      "week": "2026-W43",
+      "calls": 3908,
+      "cost_usd": 118.1657,
+      "cron_usd": 55.2691,
+      "main_usd": 62.5393,
+      "cron_share": 0.4691
+    }
+  ],
+  "weekly_share_summary": {
+    "weeks": 9,
+    "min": 0.2774,
+    "max": 0.7757,
+    "median": 0.5633,
+    "note": "分母为各周已归属成本（cron+main），不含未归属"
+  },
+  "extension_structure": {
+    "calls": 31296,
+    "cost_usd": 679.0213,
+    "gt100k_calls": 5302,
+    "gt100k_call_share": 0.1694,
+    "gt100k_cost_share": 0.4849,
+    "gt200k_calls": 983,
+    "gt200k_call_share": 0.0314,
+    "gt200k_cost_share": 0.2347,
+    "gt400k_calls": 390,
+    "gt400k_cost_share": 0.137
+  }
+}
