@@ -62,6 +62,13 @@ docstrings, and print labels); their code logic, SQL queries, aggregations, and 
 discipline are unchanged, and their `"paper"` output literal is aligned with the de-identified
 snapshots so a re-run reproduces the shipped metadata.
 
+**Note on hashes and byte counts.** The values in the tables above describe the frozen copies as
+distributed in the git repository. The anonymous mirror re-serializes files on ingest (CRLF-to-LF
+line-ending normalization plus term redaction) and re-hashes them, so both the byte counts and the
+sha256 values of files downloaded from the mirror differ slightly from this manifest; every
+statistic inside the files is unchanged. To verify a download, compare the counts and aggregates in
+the JSON, not the file hash.
+
 ## Reproduction
 
 Both harnesses open the production store **read-only** (SQLite `mode=ro` URI), issue only
